@@ -8,9 +8,9 @@ function readdirMatch(pth, pat) {
 
 // Uninstall "ffmpeg".
 function unsetup() {
-  var ffmpeg = readdirMatch('bin', /ffmpeg.*/)[0];
-  var ffplay = readdirMatch('bin', /ffplay.*/)[0];
-  var ffprobe = readdirMatch('bin', /ffprobe.*/)[0];
+  var ffmpeg = readdirMatch('assets/bin', /ffmpeg.*/)[0];
+  var ffplay = readdirMatch('assets/bin', /ffplay.*/)[0];
+  var ffprobe = readdirMatch('assets/bin', /ffprobe.*/)[0];
   fs.renameSync(ffmpeg, 'ffmpeg');
   fs.renameSync(ffplay, 'ffplay');
   fs.renameSync(ffprobe, 'ffprobe');

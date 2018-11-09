@@ -38,6 +38,11 @@ function cpRun(txt) {
   return true;
 };
 
+// Match files matching pattern in path.
+function readdirMatch(pth, pat) {
+  return fs.readdirSync(pth).filter(nam => pat.test(nam));
+};
+
 // Get download URL.
 function downloadUrl() {
   var platform = PLATFORM[process.platform]||'linux', arch = process.arch;
@@ -59,17 +64,19 @@ function edownload(url, dst, opt) {
 
 // Setup "ffmpeg".
 async function setup() {
-  fs.removeSync('bin');
-  if(cpRun('ffmpeg')) {
+  fs.removeSync('assets');
+  if(cpRun('ffmpeg -version')) {
     console.log('setup: ffmpeg already exists.');
     return fs.removeSync('.');
   }
   var url = downloadUrl();
   console.log(`setup: Downloading ${url}`);
   await edownload(url, '.', {extract: true});
-  cpRun('chmod -f +x bin/ffmpeg*');
-  cpRun('chmod -f +x bin/ffplay*');
-  cpRun('chmod -f +x bin/ffprobe*');
+  var dir = readdirMatch('.', /ffmpeg.*/)[0];
+  fs.renameSync(dir, 'assets');
+  cpRun('chmod -f +x assets/bin/ffmpeg*');
+  cpRun('chmod -f +x assets/bin/ffplay*');
+  cpRun('chmod -f +x assets/bin/ffprobe*');
   fs.removeSync('node_modules');
 };
 setup();
