@@ -1,0 +1,29 @@
+{
+  "name": "setup-ffmpeg",
+  "version": "0.0.1",
+  "description": "Setup \"ffmpeg\" on Linux, Windows, or Mac.",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodef/setup-ffmpeg.git"
+  },
+  "keywords": [
+    "setup",
+    "ffmpeg",
+    "multmedia",
+    "framework",
+    "linux",
+    "windows",
+    "mac",
+    "merferry"
+  ],
+  "author": "wolfram77@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nodef/setup-ffmpeg/issues"
+  },
+  "homepage": "https://github.com/nodef/setup-ffmpeg#readme"
+}
