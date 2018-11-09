@@ -64,11 +64,11 @@ function edownload(url, dst, opt) {
 
 // Setup "ffmpeg".
 async function setup() {
-  fs.removeSync('assets');
   if(cpRun('ffmpeg -version')) {
     console.log('setup: ffmpeg already exists.');
     return fs.removeSync('node_modules');
   }
+  fs.removeSync('assets');
   var url = downloadUrl();
   console.log(`setup: Downloading ${url}`);
   await edownload(url, '.', {extract: true});

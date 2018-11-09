@@ -1,6 +1,6 @@
 {
   "name": "setup-ffmpeg",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Setup \"ffmpeg\" on Linux, Windows, or Mac.",
   "main": "index.js",
   "preferGlobal": true,
