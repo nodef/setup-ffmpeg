@@ -15,4 +15,5 @@ function unsetup() {
   fs.renameSync(ffplay, 'ffplay');
   fs.renameSync(ffprobe, 'ffprobe');
 };
-unsetup();
+try { unsetup(); }
+catch(e) {}
