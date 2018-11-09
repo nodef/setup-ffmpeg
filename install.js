@@ -38,11 +38,6 @@ function cpRun(txt) {
   return true;
 };
 
-// Match files matching pattern in path.
-function readdirMatch(pth, pat) {
-  return fs.readdirSync(pth).filter(nam => pat.test(nam));
-};
-
 // Get download URL.
 function downloadUrl() {
   var platform = PLATFORM[process.platform]||'linux', arch = process.arch;
