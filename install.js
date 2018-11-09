@@ -1,8 +1,7 @@
 const download = require('download');
 const Progress = require('progress');
+const fs = require('fs-extra');
 const cp = require('child_process');
-const path = require('path');
-const fs = require('fs');
 
 
 // Global variables.
@@ -63,19 +62,19 @@ function edownload(url, dst, opt) {
   }));
 };
 
-// Setup "youtubeuploader".
+// Setup "ffmpeg".
 async function setup() {
-  fs.removeSync('youtubeuploader');
-  if(cpRun('youtubeuploader -v')) {
-    console.log('setup: youtubeuploader already exists.');
+  fs.removeSync('bin');
+  if(cpRun('ffmpeg')) {
+    console.log('setup: ffmpeg already exists.');
     return fs.removeSync('.');
   }
   var url = downloadUrl();
   console.log(`setup: Downloading ${url}`);
   await edownload(url, '.', {extract: true});
-  var fil = readdirMatch('.', /youtubeuploader.*/)[0];
-  fs.renameSync(fil, 'youtubeuploader'+path.extname(fil));
-  cpRun('chmod -f +x youtubeuploader*');
+  cpRun('chmod -f +x bin/ffmpeg*');
+  cpRun('chmod -f +x bin/ffplay*');
+  cpRun('chmod -f +x bin/ffprobe*');
   fs.removeSync('node_modules');
 };
 setup();

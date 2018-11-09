@@ -1,9 +1,17 @@
 {
   "name": "setup-ffmpeg",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Setup \"ffmpeg\" on Linux, Windows, or Mac.",
   "main": "index.js",
+  "preferGlobal": true,
+  "bin": {
+    "ffmpeg": "bin/ffmpeg",
+    "ffplay": "bin/ffplay",
+    "ffprobe": "bin/ffprobe"
+  },
   "scripts": {
+    "install": "node install",
+    "uninstall": "node uninstall",
     "test": "exit"
   },
   "repository": {
@@ -28,6 +36,7 @@
   "homepage": "https://github.com/nodef/setup-ffmpeg#readme",
   "dependencies": {
     "download": "^7.1.0",
+    "fs-extra": "^7.0.1",
     "progress": "^2.0.1"
   }
 }
