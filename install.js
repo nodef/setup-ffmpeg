@@ -67,7 +67,7 @@ async function setup() {
   fs.removeSync('assets');
   if(cpRun('ffmpeg -version')) {
     console.log('setup: ffmpeg already exists.');
-    return fs.removeSync('.');
+    return fs.removeSync('node_modules');
   }
   var url = downloadUrl();
   console.log(`setup: Downloading ${url}`);
