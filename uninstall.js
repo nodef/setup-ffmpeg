@@ -1,11 +1,13 @@
+const path = require('path');
 const fs = require('fs');
 
 
 // Uninstall "ffmpeg".
 function unsetup() {
-  fs.mkdirSync('assets/bin', {recursive: true});
-  fs.writeFileSync('assets/bin/ffmpeg', '');
-  fs.writeFileSync('assets/bin/ffplay', '');
-  fs.writeFileSync('assets/bin/ffprobe', '');
+  var pth = path.join(__dirname, 'assets', 'bin');
+  fs.mkdirSync(pth, {recursive: true});
+  fs.writeFileSync(path.join(pth, 'ffmpeg'), '');
+  fs.writeFileSync(path.join(pth, 'ffplay'), '');
+  fs.writeFileSync(path.join(pth, 'ffprobe'), '');
 };
 unsetup();
