@@ -6,15 +6,22 @@ const fs = require('fs');
 
 
 // Global variables.
-const RELEASE = '18.14';
-const URLPREFIX = 'https://github.com/porjo/youtubeuploader/releases/download';
-const ARCH = {
-  arm: 'armv7',
-  x64: 'amd64'
+const VERSION = '4.0.2';
+const ARCH_LINUX = {
+  arm: 'armhf-32bit',
+  arm64: 'arm64-64bit',
+  ia32: '32bit',
+  x32: '32bit',
+  x64: '64bit'
+};
+const ARCH_OTHERS = {
+  ia32: '32',
+  x32: '32',
+  x64: '64'
 };
 const PLATFORM = {
   darwin: 'mac',
-  win32: 'windows'
+  win32: 'win'
 };
 const FORMAT = '[:bar] :percent :etas';
 const OPTIONS = {
@@ -39,10 +46,10 @@ function readdirMatch(pth, pat) {
 
 // Get download URL.
 function downloadUrl() {
-  var arch = ARCH[process.arch]||process.arch;
-  var platform = PLATFORM[process.platform]||'linux';
-  var ext = platform!=='linux'? '.zip':'.gz';
-  return `${URLPREFIX}/${RELEASE}/youtubeuploader_${platform}_${arch}${ext}`;
+  var platform = PLATFORM[process.platform]||'linux', arch = process.arch;
+  arch = (platform==='linux'? ARCH_LINUX[arch]:ARCH_OTHERS[arch])||arch;
+  if(platform==='linux') return `https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-${arch}-static.tar.xz`;
+  return `https://ffmpeg.zeranoe.com/builds/${platform}${arch}/static/ffmpeg-${VERSION}-${platform}${arch}-static.zip`;
 };
 
 // Download and extract files (with progress).
