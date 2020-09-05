@@ -1,6 +1,6 @@
 {
   "name": "setup-ffmpeg",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Setup \"ffmpeg\" on Linux, Windows, or Mac.",
   "main": "index.js",
   "preferGlobal": true,
@@ -35,8 +35,8 @@
   },
   "homepage": "https://github.com/nodef/setup-ffmpeg#readme",
   "dependencies": {
-    "download": "^7.1.0",
-    "fs-extra": "^7.0.1",
-    "progress": "^2.0.1"
+    "download": "^8.0.0",
+    "fs-extra": "^9.0.1",
+    "progress": "^2.0.3"
   }
 }
